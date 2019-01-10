@@ -2,7 +2,7 @@
   <div class="content">
     <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     <div class="top-row">
-      <div class="top part" :class="{'sale-border': selectedRobot.head.onSale}">
+      <div :class="[saleBorderClass, 'top', 'part']">
         <!-- use v-once to make an interpolated message only update when the page loads. good for performance it no changes needed -->
         <div class="robot-name">
           {{selectedRobot.head.title}}
@@ -87,6 +87,9 @@ export default {
     };
   },
   computed: {
+    saleBorderClass() {
+      return this.selectedRobot.head.onSale ? "sale-border" : "";
+    },
     headBorderStyle() {
       return {
         border: this.selectedRobot.head.onSale
