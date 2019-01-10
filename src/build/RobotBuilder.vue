@@ -3,7 +3,11 @@
     <div class="top-row">
       <div class="top part">
         <!-- use v-once to make an interpolated message only update when the page loads. good for performance it no changes needed -->
-        <div class="robot-name">{{selectedRobot.head.title}}</div>
+        <div class="robot-name">
+          {{selectedRobot.head.title}}
+          <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
+        </div>
+
         <!-- :src is shorthand for v-bind:src -->
         <img :src="selectedRobot.head.src" title="head">
         <!-- @click is shorthand for v-on:click -->
@@ -234,5 +238,8 @@ export default {
   top: -25px;
   text-align: center;
   width: 100%;
+}
+.sale {
+  color: red;
 }
 </style>
