@@ -114,7 +114,9 @@ export default {
         robot.leftArm.cost +
         robot.rightArm.cost +
         robot.base.cost;
-      this.$store.commit("addRobotToCart", Object.assign({}, robot, { cost }));
+      this.$store
+        .dispatch("addRobotToCart", Object.assign({}, robot, { cost }))
+        .then(() => this.$router.push("/cart"));
       this.addedToCart = true;
     }
   }
