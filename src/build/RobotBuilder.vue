@@ -20,7 +20,7 @@
     </div>
 
     <div class="top-row">
-      <div :class="[saleBorderClass, 'top', 'part']">
+      <div :class="['top', 'part']">
         <PartSelector
           :parts="availableParts.heads"
           position="top"
@@ -93,9 +93,6 @@ export default {
   computed: {
     availableParts() {
       return this.$store.state.robots.parts;
-    },
-    saleBorderClass() {
-      return this.selectedRobot.head.onSale ? "sale-border" : "";
     },
     headBorderStyle() {
       return {
@@ -233,9 +230,7 @@ export default {
   padding: 3px;
   font-size: 16px;
 }
-.sale-border {
-  border: 3px solid red;
-}
+
 .preview {
   position: absolute;
   top: -20px;
